@@ -1,3 +1,38 @@
+# Copyright (C) 2019 The Raphielscape Company LLC.
+#
+# Licensed under the Raphielscape Public License, Version 1.c (the "License");
+# you may not use this file except in compliance with the License.
+#
+""" Userbot initialization. """
+
+import os
+from distutils.util import strtobool as sb
+from logging import DEBUG, INFO, basicConfig, getLogger
+from sys import version_info
+
+from dotenv import load_dotenv
+from pyDownload import Downloader
+from pylast import LastFMNetwork, md5
+from pymongo import MongoClient
+from redis import StrictRedis
+from requests import get
+from telethon import TelegramClient
+
+load_dotenv("config.env")
+
+# Bot Logs setup:
+CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
+
+if CONSOLE_LOGGER_VERBOSE:
+    basicConfig(
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        level=DEBUG,
+    )
+else:
+    basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+                level=INFO)
+LOGS = getLogger(__name__)
+
 if version_info[0] < 3 or version_info[1] < 6:
     LOGS.error("You MUST have a python version of at least 3.6."
                " Multiple features depend on this. Bot quitting.")
