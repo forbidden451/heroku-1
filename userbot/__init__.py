@@ -11,7 +11,7 @@ from logging import DEBUG, INFO, basicConfig, getLogger
 from sys import version_info
 
 from dotenv import load_dotenv
-from pyDownload import Downloader
+#from pyDownload import Downloader
 from pylast import LastFMNetwork, md5
 from pymongo import MongoClient
 from redis import StrictRedis
@@ -148,8 +148,8 @@ if not os.path.exists('bin'):
 url1 = 'https://raw.githubusercontent.com/yshalsager/megadown/master/megadown'
 url2 = 'https://raw.githubusercontent.com/yshalsager/cmrudl.py/master/cmrudl.py'
 
-dl1 = Downloader(url=url1, filename="bin/megadown")
-dl1 = Downloader(url=url1, filename="bin/cmrudl")
+#dl1 = Downloader(url=url1, filename="bin/megadown")
+#dl1 = Downloader(url=url1, filename="bin/cmrudl")
 
 os.chmod('bin/megadown', 0o755)
 os.chmod('bin/cmrudl', 0o755)
